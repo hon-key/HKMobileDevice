@@ -13,7 +13,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define mobileDeviceIsOneOfThem(...) [NV_MobileDevice isOneOfThem: __VA_ARGS__, nil]
+#define mobileDeviceIsOneOfThem(...) [HKMobileDevice isOneOfThem: __VA_ARGS__, nil]
 
 typedef NS_ENUM(NSUInteger, HKMobileDeviceType) {
     mobileDeviceUnkown = 0,
