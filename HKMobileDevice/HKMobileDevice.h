@@ -52,7 +52,7 @@ typedef NS_ENUM(NSUInteger, HKMobileDeviceType) {
     mobileDeviceTypeEnd//哨兵
 };
 
-typedef NS_ENUM(NSInteger,NVMobileDeviceNetworkType){
+typedef NS_ENUM(NSInteger,HKMobileDeviceNetworkType){
     none,
     _2G,_3G,_4G,
     LTE,WiFi
@@ -68,8 +68,8 @@ typedef NS_ENUM(NSInteger,NVMobileDeviceNetworkType){
 /*
  * 获取和判断当前移动设备的网络类型
  */
-+ (BOOL)isUsing:(NVMobileDeviceNetworkType)networkType;
-+ (NVMobileDeviceNetworkType)networkType;
++ (BOOL)isUsing:(HKMobileDeviceNetworkType)networkType;
++ (HKMobileDeviceNetworkType)networkType;
 
 
 + (BOOL)isJailBroken;// 判断设备是否越狱

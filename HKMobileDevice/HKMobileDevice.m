@@ -111,7 +111,7 @@
 }
 
 
-+ (NVMobileDeviceNetworkType)networkType {
++ (HKMobileDeviceNetworkType)networkType {
     UIApplication *app = [UIApplication sharedApplication];
     NSArray *subviews = [[[app valueForKey:@"statusBar"] valueForKey:@"foregroundView"] subviews];
     NSNumber *dataNetworkItemView = nil;
@@ -126,7 +126,7 @@
     return [number intValue];
 }
 
-+ (BOOL)isUsing:(NVMobileDeviceNetworkType)networkType {
++ (BOOL)isUsing:(HKMobileDeviceNetworkType)networkType {
     if ([self networkType] == networkType)
         return YES;
     return NO;
