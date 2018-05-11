@@ -11,6 +11,9 @@
 #import "SystemConfiguration/CaptiveNetwork.h"
 #import <UIKit/UIKit.h>
 
+// 赋值为 commonType、mobileDeviceUnkown、mobileDeviceTypeEnd 无效，赋值为 simulator 将忽略
+static const NSUInteger replaceSimulatorWithDevice = iPhoneX;
+
 @implementation HKMobileDevice
 
 + (NSDictionary *)deviceMap {
@@ -76,6 +79,12 @@
 + (BOOL)isOneOfThem:(HKMobileDeviceType)firstType, ... {
     
     HKMobileDeviceType deviceType = [self deviceType];
+    
+    if ((deviceType == simulatori386 || deviceType == simulatorx86_64)
+        && replaceSimulatorWithDevice != simulator) {
+        deviceType = replaceSimulatorWithDevice;
+    }
+    
     va_list types;
     __block BOOL isEqual = NO;
     
