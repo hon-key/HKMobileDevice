@@ -56,6 +56,11 @@ hk_device_in(iPad)/hk_device_is(iPhone) // 判断是否是iPad
 hk_device_in(iPod)/hk_device_is(iPhone) // 判断是否是iPod touch
 ```
 
+对于模拟器调试，由于模拟器架构为 x86或者i385，需要再调试目标设备时，将模拟器设为目标设备，例如在启动模拟器iphone8p之前，你需要先调用以下代码：
+```objc
+[HKMobileDevice simulatorType:iPhone8p];
+```
+
 # Installation
 推荐使用 CocoaPods
 ```
