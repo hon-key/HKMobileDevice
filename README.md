@@ -3,8 +3,6 @@ HKMobileDevice 是一个屏幕设备适配库， 它能够以非常灵活的方�
 使用方式非常简单，
 
 # Usage
-
-## 1
 ```objc
 // device type
 #define hk_is_iPhone hk_device_is(iPhone)
