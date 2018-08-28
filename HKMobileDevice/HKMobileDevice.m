@@ -1,18 +1,32 @@
+//  HKMobileDevice.m
+//  Copyright (c) 2018 HJ-Cai
 //
-//  NV_MobileDevice.m
-//  mynetvue
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
 //
-//  Created by 工作 on 2017/12/7.
-//  Copyright © 2017年 Netviewtech. All rights reserved.
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
 //
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
+//  型号列表：https://www.theiphonewiki.com/wiki/Models
 
 #import "HKMobileDevice.h"
+#import <UIKit/UIKit.h>
 #import <sys/sysctl.h>
 #import "SystemConfiguration/CaptiveNetwork.h"
-#import <UIKit/UIKit.h>
 
-// 赋值为 commonType、mobileDeviceUnkown、mobileDeviceTypeEnd 无效，赋值为 simulator 将忽略
-static const NSUInteger replaceSimulatorWithDevice = iPhoneX;
+static NSUInteger HKSimulatorType = simulator;
+static NSDictionary *deviceMap;
 
 @implementation HKMobileDevice
 
@@ -38,6 +52,7 @@ static const NSUInteger replaceSimulatorWithDevice = iPhoneX;
              @"iPod1,1":@(iPod1G),@"iPod2,1":@(iPod2G),
              @"iPod3,1":@(iPod3G),@"iPod4,1":@(iPod4G),
              @"iPod5,1":@(iPod5Gen),
+             @"iPod7,1":@(iPod6Gen),
              // iPad
              @"iPad1,1":@(iPad1),@"iPad1,2":@(iPad1_3G),
              @"iPad2,1":@(iPad2WiFi),@"iPad2,2":@(iPad2),@"iPad2,3":@(iPad2CDMA),@"iPad2,4":@(iPad2),
@@ -54,8 +69,14 @@ static const NSUInteger replaceSimulatorWithDevice = iPhoneX;
              @"iPad6,11":@(iPad5WiFi),@"iPad6,12":@(iPad5Cellular),
              @"iPad7,1":@(iPadPro12_9),@"iPad7,2":@(iPadPro12_9),
              @"iPad7,3":@(iPadPro10_5),@"iPad7,4":@(iPadPro10_5),
+             @"iPad7,3":@(iPad6WiFi),@"iPad7,4":@(iPad6Cellular),
+             // simulator
              @"i386":@(simulatori386),@"x86_64":@(simulatorx86_64),
              };
+}
+
++ (void)simulatorType:(HKMobileDeviceType)type {
+    HKSimulatorType = type;
 }
 /*
  *  返回通用类型，可用于模糊查询
@@ -81,8 +102,8 @@ static const NSUInteger replaceSimulatorWithDevice = iPhoneX;
     HKMobileDeviceType deviceType = [self deviceType];
     
     if ((deviceType == simulatori386 || deviceType == simulatorx86_64)
-        && replaceSimulatorWithDevice != simulator) {
-        deviceType = replaceSimulatorWithDevice;
+        && HKSimulatorType != simulator) {
+        deviceType = HKSimulatorType;
     }
     
     va_list types;

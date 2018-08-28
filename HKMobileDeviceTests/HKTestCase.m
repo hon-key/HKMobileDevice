@@ -26,14 +26,12 @@
 }
 
 - (void)testExample {
+    [HKMobileDevice simulatorType:iPhone4];
     
-    if (mobileDeviceIsOneOfThem(simulator)) {
-        NSLog(@"simulator");
-    }else {
-        NSLog(@"not simulator");
-    }
+    NSLog(@"%fx%f",[UIScreen mainScreen].bounds.size.width,[UIScreen mainScreen].bounds.size.height);
     
-    
+    BOOL value = hk_screen_320x568;
+    XCTAssert(value);
 }
 
 - (void)testPerformanceExample {

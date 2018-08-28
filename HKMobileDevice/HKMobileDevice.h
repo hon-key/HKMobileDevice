@@ -1,20 +1,57 @@
+//  HKMobileDevice.h
+//  Copyright (c) 2018 HJ-Cai
 //
-//  NV_MobileDevice.h
-//  mynetvue
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
 //
-//  Created by 工作 on 2017/12/7.
-//  Copyright © 2017年 Netviewtech. All rights reserved.
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
 //
-/*
- *                  该类提供区分不同设备的接口
- *                  并提供一些特定于设备的职能，如该设备是否越狱，该设备正在使用什么网络类型
- */
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
 
 
 #import <Foundation/Foundation.h>
 
-#define mobileDeviceIsOneOfThem(...) [HKMobileDevice isOneOfThem: __VA_ARGS__, nil]
+#define hk_device_in(...) [HKMobileDevice isOneOfThem: __VA_ARGS__, nil]
+#define hk_device_is(is) [HKMobileDevice isOneOfThem:is,nil]
+// device type
+#define hk_is_iPhone hk_device_is(iPhone)
+#define hk_is_iPad hk_device_is(iPad)
+#define hk_is_iPod hk_device_is(iPod)
+// serial
+#define hk_is_iPhone5_serial hk_device_in(iPhone5,iPhone5c,iPhone5s)
+#define hk_is_iPhone6_serial hk_device_in(iPhone6,iPhone6s,iPhone6p,iPhone6sp)
+#define hk_is_iPhone7_serial hk_device_in(iPhone7,iPhone7p)
+#define hk_is_iPhone8_serial hk_device_in(iPhone8,iPhone8p)
+#define hk_is_iPad1_serial hk_device_in(iPad1,iPad1_3G)
+#define hk_is_iPad2_serial hk_device_in(iPad2WiFi,iPad2,iPad2CDMA)
+#define hk_is_iPad3_serial hk_device_in(iPad3,ipad3WiFi,ipad3GSM_CDMA)
+#define hk_is_iPad4_serial hk_device_in(iPad4,ipad4WiFi,iPad4GSM_CDMA)
+#define hk_is_iPad5_serial hk_device_in(iPad5WiFi,iPad5Cellular)
+#define hk_is_iPad6_serial hk_device_in(iPad6WiFi,iPad6Cellular)
+#define hk_is_iPadMini_serial hk_device_in(iPadMiniWiFi,iPadMini,iPadMiniGSM_CDMA)
+#define hk_is_iPadMini2_serial hk_device_in(iPadMini2WiFi,iPadMini2Cellular,iPadMini2)
+#define hk_is_iPadMini4_serial hk_device_in(iPadMini4WiFi,iPadMini4LTE)
+#define hk_is_iPadAir_serial hk_device_in(iPadAirWiFi,iPadAirCellular)
+#define hk_is_iPadPro_serial hk_device_in(iPadPro9_7,iPadPro12_9,iPadPro10_5)
+// size
+#define hk_screen_320x568 hk_device_in(iPhone5,iPhone5c,iPhone5s,iPhoneSE)
+#define hk_screen_375x667 hk_device_in(iPhone6,iPhone6s,iPhone7,iPhone8)
+#define hk_screen_414x736 hk_device_in(iPhone6p,iPhone6sp,iPhone7p,iPhone8p)
+#define hk_screen_375x812 hk_device_in(iPhoneX)
 
+
+// 为了方便使用，将不为枚举添加前缀，请使用前注意没有冲突问题
 typedef NS_ENUM(NSUInteger, HKMobileDeviceType) {
     mobileDeviceUnkown = 0,
     
@@ -30,9 +67,9 @@ typedef NS_ENUM(NSUInteger, HKMobileDeviceType) {
     iPhoneX,
     //==>iPod
     iPod,//17
-    iPod1G,iPod2G,iPod3G,iPod4G,iPod5Gen,
+    iPod1G,iPod2G,iPod3G,iPod4G,iPod5Gen,iPod6Gen,
     //==>ipad
-    iPad,//23
+    iPad,//24
     iPad1,iPad1_3G,
     iPad2WiFi,iPad2,iPad2CDMA,
     iPadMiniWiFi,iPadMini,iPadMiniGSM_CDMA,
@@ -45,8 +82,9 @@ typedef NS_ENUM(NSUInteger, HKMobileDeviceType) {
     iPadAir2,
     iPadPro9_7,iPadPro12_9,iPadPro10_5,
     iPad5WiFi,iPad5Cellular,
+    iPad6WiFi,iPad6Cellular,
     //==>simulator
-    simulator,//52
+    simulator,//54
     simulatori386,simulatorx86_64,
     
     mobileDeviceTypeEnd//哨兵
@@ -59,6 +97,13 @@ typedef NS_ENUM(NSInteger,HKMobileDeviceNetworkType){
 };
 
 @interface HKMobileDevice : NSObject
+
+/*
+ *  因为模拟器运行所识别的型号为模拟器，可设置模拟器代替型号，以方便模拟器调试。
+ *  设置为 simulator 则不做任何代替
+ *  不要赋值为 iPhone等通用类型、mobileDeviceUnkown、mobileDeviceTypeEnd
+ */
++ (void)simulatorType:(HKMobileDeviceType)type;
 /*
  *  获取和判断移动设备的型号
  */
