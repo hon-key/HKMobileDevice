@@ -33,6 +33,7 @@
 #define hk_is_iPhone6_serial hk_device_in(iPhone6,iPhone6s,iPhone6p,iPhone6sp)
 #define hk_is_iPhone7_serial hk_device_in(iPhone7,iPhone7p)
 #define hk_is_iPhone8_serial hk_device_in(iPhone8,iPhone8p)
+#define hk_is_iPhoneX_serial hk_device_in(iPhoneX,iPhoneXR,iPhoneXS,iPhoneXSMax)
 #define hk_is_iPad1_serial hk_device_in(iPad1,iPad1_3G)
 #define hk_is_iPad2_serial hk_device_in(iPad2WiFi,iPad2,iPad2CDMA)
 #define hk_is_iPad3_serial hk_device_in(iPad3,ipad3WiFi,ipad3GSM_CDMA)
@@ -48,7 +49,8 @@
 #define hk_screen_320x568 hk_device_in(iPhone5,iPhone5c,iPhone5s,iPhoneSE)
 #define hk_screen_375x667 hk_device_in(iPhone6,iPhone6s,iPhone7,iPhone8)
 #define hk_screen_414x736 hk_device_in(iPhone6p,iPhone6sp,iPhone7p,iPhone8p)
-#define hk_screen_375x812 hk_device_in(iPhoneX)
+#define hk_screen_375x812 hk_device_in(iPhoneX,iPhoneXS)
+#define hk_screen_414x896 hk_device_in(iPhoneXSMax,iPhoneXR)
 
 
 // 为了方便使用，将不为枚举添加前缀，请使用前注意没有冲突问题
@@ -65,11 +67,12 @@ typedef NS_ENUM(NSUInteger, HKMobileDeviceType) {
     iPhone7,iPhone7p,
     iPhone8,iPhone8p,
     iPhoneX,
+    iPhoneXR,iPhoneXS,iPhoneXSMax,
     //==>iPod
-    iPod,//17
+    iPod,//20
     iPod1G,iPod2G,iPod3G,iPod4G,iPod5Gen,iPod6Gen,
     //==>ipad
-    iPad,//24
+    iPad,//27
     iPad1,iPad1_3G,
     iPad2WiFi,iPad2,iPad2CDMA,
     iPadMiniWiFi,iPadMini,iPadMiniGSM_CDMA,
@@ -84,7 +87,7 @@ typedef NS_ENUM(NSUInteger, HKMobileDeviceType) {
     iPad5WiFi,iPad5Cellular,
     iPad6WiFi,iPad6Cellular,
     //==>simulator
-    simulator,//54
+    simulator,//58
     simulatori386,simulatorx86_64,
     
     mobileDeviceTypeEnd//哨兵

@@ -17,28 +17,22 @@
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    [HKMobileDevice simulatorType:iPhoneXS];
+    NSLog(@"%fx%f",[UIScreen mainScreen].bounds.size.width,[UIScreen mainScreen].bounds.size.height);
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
 
-- (void)testExample {
-    [HKMobileDevice simulatorType:iPhone4];
-    
-    NSLog(@"%fx%f",[UIScreen mainScreen].bounds.size.width,[UIScreen mainScreen].bounds.size.height);
-    
-    BOOL value = hk_screen_320x568;
+- (void)testScreen {
+    BOOL value = hk_screen_375x812;
     XCTAssert(value);
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (void)testIn {
+    BOOL value = hk_device_in(iPhoneXR,iPhoneXSMax,iPhoneXS);
+    XCTAssert(value);
 }
 
 @end
