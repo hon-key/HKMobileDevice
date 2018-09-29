@@ -28,7 +28,8 @@ HKMobileDevice 是一个屏幕设备适配库， 它能够以非常灵活的方�
 #define hk_screen_320x568 hk_device_in(iPhone5,iPhone5c,iPhone5s,iPhoneSE)
 #define hk_screen_375x667 hk_device_in(iPhone6,iPhone6s,iPhone7,iPhone8)
 #define hk_screen_414x736 hk_device_in(iPhone6p,iPhone6sp,iPhone7p,iPhone8p)
-#define hk_screen_375x812 hk_device_in(iPhoneX)
+#define hk_screen_375x812 hk_device_in(iPhoneX,iPhoneXS)
+#define hk_screen_414x896 hk_device_in(iPhoneXSMax,iPhoneXR)
 
 if (hk_screen_320x568) {
         ····
@@ -52,8 +53,8 @@ hk_device_in(iPhone4,iPhone7);
 HKMobileDevice 提供通用匹配功能，如果你在对iphone和ipad进行同时同时开发，你可以对通用设备进行匹配
 ```objc
 hk_device_in(iPhone)/hk_device_is(iPhone) // 判断是否是iPhone
-hk_device_in(iPad)/hk_device_is(iPhone) // 判断是否是iPad
-hk_device_in(iPod)/hk_device_is(iPhone) // 判断是否是iPod touch
+hk_device_in(iPad)/hk_device_is(iPad) // 判断是否是iPad
+hk_device_in(iPod)/hk_device_is(iPod) // 判断是否是iPod touch
 ```
 
 对于模拟器调试，由于模拟器架构为 x86_64或者i385，调试目标设备时，需要将模拟器设为目标设备，例如在启动模拟器iphone8p之前，你需要在app启动时调用以下代码：
@@ -73,9 +74,11 @@ HKMobileDevice.m
 ```
 
 # Version
-1.0.0
+1.1.0
 
 ios 8.0
+
+已添加 iPhoneXS、iPhoneXR、iPhoneXS Max
 
 ## License
 
