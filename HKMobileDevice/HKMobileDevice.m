@@ -73,6 +73,8 @@ static NSDictionary *deviceMap;
              @"iPad7,1":@(iPadPro12_9),@"iPad7,2":@(iPadPro12_9),
              @"iPad7,3":@(iPadPro10_5),@"iPad7,4":@(iPadPro10_5),
              @"iPad7,3":@(iPad6WiFi),@"iPad7,4":@(iPad6Cellular),
+             @"iPad8,1":@(iPadPro11),@"iPad8,2":@(iPadPro11),@"iPad8,3":@(iPadPro11),@"iPad8,4":@(iPadPro11),
+             @"iPad8,5":@(iPadPro12_9),@"iPad8,6":@(iPadPro12_9),@"iPad8,7":@(iPadPro12_9),@"iPad8,8":@(iPadPro12_9),
              // simulator
              @"i386":@(simulatori386),@"x86_64":@(simulatorx86_64),
              };
@@ -145,18 +147,23 @@ static NSDictionary *deviceMap;
 
 
 + (HKMobileDeviceNetworkType)networkType {
-    UIApplication *app = [UIApplication sharedApplication];
-    NSArray *subviews = [[[app valueForKey:@"statusBar"] valueForKey:@"foregroundView"] subviews];
-    NSNumber *dataNetworkItemView = nil;
-    
-    for (id subview in subviews) {
-        if([subview isKindOfClass:[NSClassFromString(@"UIStatusBarDataNetworkItemView") class]]) {
-            dataNetworkItemView = subview;
-            break;
+    if (hk_is_iPhoneX_serial) {
+        return none;
+    }else {
+        UIApplication *app = [UIApplication sharedApplication];
+        UIView *statusBar = [app valueForKey:@"statusBar"];
+        NSArray *subviews = [[statusBar valueForKey:@"foregroundView"] subviews];
+        NSNumber *dataNetworkItemView = nil;
+        
+        for (id subview in subviews) {
+            if([subview isKindOfClass:[NSClassFromString(@"UIStatusBarDataNetworkItemView") class]]) {
+                dataNetworkItemView = subview;
+                break;
+            }
         }
+        NSNumber *number = (NSNumber*)[dataNetworkItemView valueForKey:@"dataNetworkType"];
+        return [number intValue];
     }
-    NSNumber *number = (NSNumber*)[dataNetworkItemView valueForKey:@"dataNetworkType"];
-    return [number intValue];
 }
 
 + (BOOL)isUsing:(HKMobileDeviceNetworkType)networkType {

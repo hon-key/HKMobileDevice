@@ -44,7 +44,7 @@
 #define hk_is_iPadMini2_serial hk_device_in(iPadMini2WiFi,iPadMini2Cellular,iPadMini2)
 #define hk_is_iPadMini4_serial hk_device_in(iPadMini4WiFi,iPadMini4LTE)
 #define hk_is_iPadAir_serial hk_device_in(iPadAirWiFi,iPadAirCellular)
-#define hk_is_iPadPro_serial hk_device_in(iPadPro9_7,iPadPro12_9,iPadPro10_5)
+#define hk_is_iPadPro_serial hk_device_in(iPadPro9_7,iPadPro12_9,iPadPro10_5,iPadPro11)
 // size
 #define hk_screen_320x568 hk_device_in(iPhone5,iPhone5c,iPhone5s,iPhoneSE)
 #define hk_screen_375x667 hk_device_in(iPhone6,iPhone6s,iPhone7,iPhone8)
@@ -86,8 +86,9 @@ typedef NS_ENUM(NSUInteger, HKMobileDeviceType) {
     iPadPro9_7,iPadPro12_9,iPadPro10_5,
     iPad5WiFi,iPad5Cellular,
     iPad6WiFi,iPad6Cellular,
+    iPadPro11,
     //==>simulator
-    simulator,//58
+    simulator,//59
     simulatori386,simulatorx86_64,
     
     mobileDeviceTypeEnd//哨兵
