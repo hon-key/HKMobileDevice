@@ -74,11 +74,11 @@ HKMobileDevice.m
 ```
 
 # Version
-1.1.0
+1.1.1
 
 ios 8.0
 
-已添加 iPhoneXS、iPhoneXR、iPhoneXS Max
+已添加全面屏 iPad Pro
 
 ## License
 
