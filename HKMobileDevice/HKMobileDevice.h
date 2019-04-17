@@ -87,8 +87,10 @@ typedef NS_ENUM(NSUInteger, HKMobileDeviceType) {
     iPad5WiFi,iPad5Cellular,
     iPad6WiFi,iPad6Cellular,
     iPadPro11,
+    iPadAir3,
+    iPadMini5,
     //==>simulator
-    simulator,//59
+    simulator,//61
     simulatori386,simulatorx86_64,
     
     mobileDeviceTypeEnd//哨兵

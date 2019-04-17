@@ -62,7 +62,7 @@ static NSDictionary *deviceMap;
              @"iPad2,5":@(iPadMiniWiFi),@"iPad2,6":@(iPadMini),@"iPad2,7":@(iPadMiniGSM_CDMA),
              @"iPad3,1":@(ipad3WiFi),@"iPad3,2":@(ipad3GSM_CDMA),@"iPad3,3":@(iPad3),
              @"iPad3,4":@(ipad4WiFi),@"iPad3,5":@(iPad4),@"iPad3,6":@(iPad4GSM_CDMA),
-             @"iPad4,1":@(iPadAirWiFi),@"iPad4,2":@(iPadAirCellular),
+             @"iPad4,1":@(iPadAirWiFi),@"iPad4,2":@(iPadAirCellular),@"iPad4,3":@(iPadAirCellular),
              @"iPad4,4":@(iPadMini2WiFi),@"iPad4,5":@(iPadMini2Cellular),@"iPad4,6":@(iPadMini2),
              @"iPad4,7":@(iPadMini3),@"iPad4,8":@(iPadMini3),@"iPad4,9":@(iPadMini3),
              @"iPad5,1":@(iPadMini4WiFi),@"iPad5,2":@(iPadMini4LTE),
@@ -72,9 +72,11 @@ static NSDictionary *deviceMap;
              @"iPad6,11":@(iPad5WiFi),@"iPad6,12":@(iPad5Cellular),
              @"iPad7,1":@(iPadPro12_9),@"iPad7,2":@(iPadPro12_9),
              @"iPad7,3":@(iPadPro10_5),@"iPad7,4":@(iPadPro10_5),
-             @"iPad7,3":@(iPad6WiFi),@"iPad7,4":@(iPad6Cellular),
+             @"iPad7,5":@(iPad6WiFi),@"iPad7,6":@(iPad6Cellular),
              @"iPad8,1":@(iPadPro11),@"iPad8,2":@(iPadPro11),@"iPad8,3":@(iPadPro11),@"iPad8,4":@(iPadPro11),
              @"iPad8,5":@(iPadPro12_9),@"iPad8,6":@(iPadPro12_9),@"iPad8,7":@(iPadPro12_9),@"iPad8,8":@(iPadPro12_9),
+             @"iPad11,1":@(iPadMini5),@"iPad11,2":@(iPadMini5),
+             @"iPad11,3":@(iPadAir3),@"iPad11,4":@(iPadAir3),
              // simulator
              @"i386":@(simulatori386),@"x86_64":@(simulatorx86_64),
              };
