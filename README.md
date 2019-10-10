@@ -74,12 +74,11 @@ HKMobileDevice.m
 ```
 
 # Version
-1.1.2
+1.1.3
 
 ios 8.0
 
-修复了 ipad6代的一个标识错误
-已添加 iPad Air 3 和 iPad mini 5
+新增 iphone 11 系列
 
 ## License
 
