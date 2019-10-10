@@ -51,6 +51,7 @@ static NSDictionary *deviceMap;
              @"iPhone11,2":@(iPhoneXS),
              @"iPhone11,4":@(iPhoneXSMax),@"iPhone11,6":@(iPhoneXSMax),
              @"iPhone11,8":@(iPhoneXR),
+             @"iPhone12,1":@(iPhone11),@"iPhone12,3":@(iPhone11Pro),@"iPhone12,5":@(iPhone11ProMax),
              // iPod
              @"iPod1,1":@(iPod1G),@"iPod2,1":@(iPod2G),
              @"iPod3,1":@(iPod3G),@"iPod4,1":@(iPod4G),

@@ -34,6 +34,8 @@
 #define hk_is_iPhone7_serial hk_device_in(iPhone7,iPhone7p)
 #define hk_is_iPhone8_serial hk_device_in(iPhone8,iPhone8p)
 #define hk_is_iPhoneX_serial hk_device_in(iPhoneX,iPhoneXR,iPhoneXS,iPhoneXSMax)
+#define hk_is_iPhone11_serial hk_device_in(iPhone11,iPhone11Pro,iPhone11ProMax)
+#define hk_is_iPhoneWithHair_serial (hk_is_iPhoneX_serial || hk_is_iPhone11_serial)
 #define hk_is_iPad1_serial hk_device_in(iPad1,iPad1_3G)
 #define hk_is_iPad2_serial hk_device_in(iPad2WiFi,iPad2,iPad2CDMA)
 #define hk_is_iPad3_serial hk_device_in(iPad3,ipad3WiFi,ipad3GSM_CDMA)
@@ -68,11 +70,12 @@ typedef NS_ENUM(NSUInteger, HKMobileDeviceType) {
     iPhone8,iPhone8p,
     iPhoneX,
     iPhoneXR,iPhoneXS,iPhoneXSMax,
+    iPhone11,iPhone11Pro,iPhone11ProMax,
     //==>iPod
-    iPod,//20
+    iPod,//23
     iPod1G,iPod2G,iPod3G,iPod4G,iPod5Gen,iPod6Gen,
     //==>ipad
-    iPad,//27
+    iPad,//30
     iPad1,iPad1_3G,
     iPad2WiFi,iPad2,iPad2CDMA,
     iPadMiniWiFi,iPadMini,iPadMiniGSM_CDMA,
@@ -90,7 +93,7 @@ typedef NS_ENUM(NSUInteger, HKMobileDeviceType) {
     iPadAir3,
     iPadMini5,
     //==>simulator
-    simulator,//61
+    simulator,//64
     simulatori386,simulatorx86_64,
     
     mobileDeviceTypeEnd//哨兵

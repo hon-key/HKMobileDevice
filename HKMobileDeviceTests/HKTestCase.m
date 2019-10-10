@@ -17,7 +17,7 @@
 
 - (void)setUp {
     [super setUp];
-    [HKMobileDevice simulatorType:iPadPro11];
+    [HKMobileDevice simulatorType:iPhone8];
     NSLog(@"%fx%f",[UIScreen mainScreen].bounds.size.width,[UIScreen mainScreen].bounds.size.height);
 }
 
@@ -32,7 +32,7 @@
 }
 
 - (void)testIn {
-    BOOL value = hk_device_in(iPhoneXR,iPhoneXSMax,iPhoneXS,iPadPro11);
+    BOOL value = hk_is_iPhoneWithHair_serial;
     XCTAssert(value);
 }
 
